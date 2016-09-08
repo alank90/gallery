@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Generated Elements with JavaScript</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <body>
+        <div id="container"></div>
+        <script>
+            var button = document.createElement("button");
+            var container = document.getElementById("container");
+            button.id = "clicky";
+            button.innerHTML = "Click Me";
+            container.appendChild(button);
+        </script>
+    </body>
+
+</html>
