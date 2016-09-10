@@ -86,14 +86,25 @@ div#masonry img {
       opacity: 1;
    }
 
+.popup-flex-container {
+    display: -webkit-flex;  Safari
+    display: flex;
+    -webkit-justify-content: center;  Safari
+    justify-content:         center;
+}
+
 img#popup {
     display: none;
     position: absolute;
-    top: 45vh;
-    left: 45vw;
+    top: 10rem;
+    right: 48rem;
+    margin; 0 auto;
+    width: 100%;
+    max-width: 70rem;
     z-index: 1;
     opacity: 1;
     border-radius: 50%;
+
 }
 
 /* fallback for earlier versions of Firefox */
@@ -233,3 +244,5 @@ img#popup {
         page-break-after: avoid;
     }
 }
+
+
