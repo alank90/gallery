@@ -61,6 +61,56 @@ body {
   background: #131212;
 }
 
+/* See article at https://www.smashingmagazine.com/2013/08/absolute-horizontal-vertical-centering-css/ for more examples of positioning with absolute property. */
+
+.Absolute_Center {
+  width: auto;
+  height: auto;
+/*  max-height: 80vh;  Controls How much of viewport image takes up.*/
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is_Image {
+  height: auto;
+}
+
+.Absolute-Center.is_Image img {
+  width: 100%;
+  height: auto;
+}
+
+.visible  {
+  display: block;
+}
+
+.arrow  {
+  display: none;
+}
+
+.Forward_Arrow  {
+  width: auto;
+  height: auto;
+  max-height: 10vh;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 65%; left: 0; bottom: 0; right:20%;
+ }
+
+.Back_Arrow  {
+  width: auto;
+  height: auto;
+  max-height: 10vh;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 65%; left: 20%; bottom: 0; right:0;
+}
+
+
 div#masonry {
   display: -ms-flexbox;
   -ms-flex-direction: column;
@@ -86,26 +136,16 @@ div#masonry img {
       opacity: 1;
    }
 
-.popup-flex-container {
-    display: -webkit-flex;  Safari
-    display: flex;
-    -webkit-justify-content: center;  Safari
-    justify-content:         center;
-}
-
 img#popup {
     display: none;
-    position: absolute;
-    top: 10rem;
-    right: 48rem;
-    margin; 0 auto;
-    width: 100%;
-    max-width: 70rem;
+    max-width: 40%;
+    max-height: 95vh;
     z-index: 1;
     opacity: 1;
     border-radius: 50%;
-
 }
+
+
 
 /* fallback for earlier versions of Firefox */
 

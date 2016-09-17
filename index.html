@@ -20,9 +20,11 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-  <div class="popup-flex-container">
-     <img id="popup">
-  </div>
+
+     <img id="popup" class="Absolute_Center is_Image" alt="Beautiful Girl Popup">
+      <img class="arrow Forward_Arrow" id="Fwd" src="http://akillian.x10host.com/gallery/img/go_next_black.png" alt="Forward Arrow">
+      <img class="arrow Back_Arrow" id="Back" src="http://akillian.x10host.com/gallery/img/go_previous_black.png" alt="Back Arrow">
+
 
 
     <div id="masonry">
@@ -40,19 +42,42 @@
    ---------------------- Javascript below this line  --------------------------------------------------------------
    ----------------------------------------------------------------------------------------------------------------->
  <script>
-   // add event listener to popup image
+   // Variable Declarations
     var el = document.getElementById("masonry");
     var imgPopup = document.getElementById("popup");
 
-    el.addEventListener("click", function(e)  {
-          imgClicked = e.target.src;
-          imgPopup.setAttribute("src", imgClicked);
-          imgPopup.style.display = "block";
+     // add event listener for Large Popup of image when small image on page is clicked
+    el.addEventListener("click", function (e) {
+        imgClicked = e.target.src;
+        imgPopup.setAttribute("src", imgClicked);
+        imgPopup.style.display = "block";
+        var allImages = document.images;
+        for (var i = 0; i < allImages.length; i++) {
+            if (allImages[i].classList.contains("arrow")) {
+                allImages[i].classList.toggle("arrow");
+                allImages[i].style.zIndex = "9";
+            }
+        }
     });
+     // End Popup Event
 
-    imgPopup.addEventListener("click", function()  {
-          imgPopup.style.display = "none";
+     // Click Event to dismiss the Center Popup image.
+    imgPopup.addEventListener("click", function () {
+        var allImages = document.images;
+        imgPopup.style.display = "none";
+        for (var i = 0; i < allImages.length; i++) {
+            if ((allImages[i].classList.contains("Back_Arrow")) || (allImages[i].classList.contains("Forward_Arrow"))) {
+                //console.log(allImages[i]);
+                allImages[i].classList.toggle("arrow");
+            }
+        }
     });
+     // End Tear down of Popup image
+
+
+
+
+
 </script>
 
 </body>
