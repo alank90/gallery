@@ -21,21 +21,20 @@
         <![endif]-->
 
 
-     <img id="popup" class="Absolute_Center is_Image" alt="Beautiful Girl Popup">
-      <img class="arrow Forward_Arrow" id="Fwd" src="http://akillian.x10host.com/gallery/img/go_next_black.png" alt="Forward Arrow">
-      <img class="arrow Back_Arrow" id="Back" src="http://akillian.x10host.com/gallery/img/go_previous_black.png" alt="Back Arrow">
-
+     <img id="popup" class="Absolute_Center is_Image" alt="Beautiful Girl Popup" data-picture="">
+     <img class="arrow Back_Arrow" src="http://akillian.x10host.com/gallery/img/go_previous_black.png" alt="Back Arrow">
+     <img class="arrow Forward_Arrow" src="http://akillian.x10host.com/gallery/img/go_next_black.png" alt="Forward Arrow">
 
 
     <div id="masonry">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/1.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/2.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/3.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/4.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/6.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/8.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/9.jpg">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/7.jpg">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/1.jpg" data-picture = "1">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/2.jpg" data-picture = "2">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/3.jpg" data-picture = "3">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/4.jpg" data-picture = "4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/6.jpg" data-picture = "5">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/8.jpg" data-picture = "6">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/9.jpg" data-picture = "7">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/7.jpg" data-picture = "8">
     </div>
 
   <!-- -------------------------------------------------------------------------------------------------------------
@@ -48,9 +47,11 @@
 
      // add event listener for Large Popup of image when small image on page is clicked
     el.addEventListener("click", function (e) {
-        imgClicked = e.target.src;
+        var imgClicked = e.target.src;
+        var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
         imgPopup.setAttribute("src", imgClicked);
         imgPopup.style.display = "block";
+        imgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute
         var allImages = document.images;
         for (var i = 0; i < allImages.length; i++) {
             if (allImages[i].classList.contains("arrow")) {
@@ -75,8 +76,20 @@
      // End Tear down of Popup image
 
 
+     // Forward Arrow event handler Begins here
 
+     var ofwdArrow = document.querySelector(".Forward_Arrow");
 
+     ofwdArrow.addEventListener("click", function(e) {
+//         var imgInCenter = document.getElementById("popup");
+         y = imgPopup.dataset.picture;
+         console.log(y);
+
+       /*  var allImages = document.images;
+         var x = imgPopup.allImages[y];
+         console.log(x);*/
+
+    });
 
 </script>
 
