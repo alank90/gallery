@@ -42,34 +42,34 @@
    ----------------------------------------------------------------------------------------------------------------->
  <script>
    // Variable Declarations
-    var el = document.getElementById("masonry");
-    var imgPopup = document.getElementById("popup");
+    var oel = document.getElementById("masonry");
+    var oimgPopup = document.getElementById("popup");
 
      // add event listener for Large Popup of image when small image on page is clicked
-    el.addEventListener("click", function (e) {
+    oel.addEventListener("click", function (e) {
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
-        imgPopup.setAttribute("src", imgClicked);
-        imgPopup.style.display = "block";
-        imgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute
-        var allImages = document.images;
+        oimgPopup.setAttribute("src", imgClicked);
+        oimgPopup.style.display = "block";
+        oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute
+        var oallImages = document.images;
         for (var i = 0; i < allImages.length; i++) {
-            if (allImages[i].classList.contains("arrow")) {
-                allImages[i].classList.toggle("arrow");
-                allImages[i].style.zIndex = "9";
+            if (oallImages[i].classList.contains("arrow")) {
+                oallImages[i].classList.toggle("arrow");
+                oallImages[i].style.zIndex = "9";
             }
         }
     });
      // End Popup Event
 
      // Click Event to dismiss the Center Popup image.
-    imgPopup.addEventListener("click", function () {
-        var allImages = document.images;
-        imgPopup.style.display = "none";
+    oimgPopup.addEventListener("click", function () {
+        var oallImages = document.images;
+        oimgPopup.style.display = "none";
         for (var i = 0; i < allImages.length; i++) {
-            if ((allImages[i].classList.contains("Back_Arrow")) || (allImages[i].classList.contains("Forward_Arrow"))) {
-                //console.log(allImages[i]);
-                allImages[i].classList.toggle("arrow");
+            if ((oallImages[i].classList.contains("Back_Arrow")) || (oallImages[i].classList.contains("Forward_Arrow"))) {
+                //console.log(oallImages[i]);
+                oallImages[i].classList.toggle("arrow");
             }
         }
     });
@@ -81,12 +81,12 @@
      var ofwdArrow = document.querySelector(".Forward_Arrow");
 
      ofwdArrow.addEventListener("click", function(e) {
-//         var imgInCenter = document.getElementById("popup");
-         y = imgPopup.dataset.picture;
+//         var oimgInCenter = document.getElementById("popup");
+         y = oimgPopup.dataset.picture;
          console.log(y);
 
-       /*  var allImages = document.images;
-         var x = imgPopup.allImages[y];
+       /*  var oallImages = document.images;
+         var x = oimgPopup.oallImages[y];
          console.log(x);*/
 
     });
