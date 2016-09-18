@@ -41,19 +41,23 @@
    ---------------------- Javascript below this line  --------------------------------------------------------------
    ----------------------------------------------------------------------------------------------------------------->
  <script>
-   // Variable Declarations
+   // Global Variable Declarations
     var oel = document.getElementById("masonry");
     var oimgPopup = document.getElementById("popup");
 
-     // add event listener for Large Popup of image when small image on page is clicked
+
+   /* =============================================================================
+     ============ add event listener for Large Popup of       =====================
+     ============ image when small image on page is clicked   =====================
+     ============================================================================ */
     oel.addEventListener("click", function (e) {
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
         oimgPopup.setAttribute("src", imgClicked);
         oimgPopup.style.display = "block";
-        oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute
+        oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
         var oallImages = document.images;
-        for (var i = 0; i < allImages.length; i++) {
+        for (var i = 0; i < oallImages.length; i++) {
             if (oallImages[i].classList.contains("arrow")) {
                 oallImages[i].classList.toggle("arrow");
                 oallImages[i].style.zIndex = "9";
@@ -62,11 +66,13 @@
     });
      // End Popup Event
 
-     // Click Event to dismiss the Center Popup image.
+     /* ===========================================================================
+     ============ Click Event to dismiss the Center Popup image. ==================
+     ============================================================================ */
     oimgPopup.addEventListener("click", function () {
         var oallImages = document.images;
         oimgPopup.style.display = "none";
-        for (var i = 0; i < allImages.length; i++) {
+        for (var i = 0; i < oallImages.length; i++) {
             if ((oallImages[i].classList.contains("Back_Arrow")) || (oallImages[i].classList.contains("Forward_Arrow"))) {
                 //console.log(oallImages[i]);
                 oallImages[i].classList.toggle("arrow");
@@ -76,7 +82,9 @@
      // End Tear down of Popup image
 
 
-     // Forward Arrow event handler Begins here
+     /* ====================================================================
+     ============ Forward Arrow event handler Begins here ==================
+     ===================================================================== */
 
      var ofwdArrow = document.querySelector(".Forward_Arrow");
 
