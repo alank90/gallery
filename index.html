@@ -90,12 +90,14 @@
 
      ofwdArrow.addEventListener("click", function(e) {
 //         var oimgInCenter = document.getElementById("popup");
-         y = oimgPopup.dataset.picture;
-         console.log(y);
+         var y = oimgPopup.dataset.picture;
+        /* var n = parseInt(y);
+         n = n + 1;
+         console.log(n);
+         a = n.toString();*/
 
-       /*  var oallImages = document.images;
-         var x = oimgPopup.oallImages[y];
-         console.log(x);*/
+         var nextImage = document.querySelector('[data-picture = "6"]');
+         console.log(nextImage);
 
     });
 
