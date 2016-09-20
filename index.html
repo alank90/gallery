@@ -91,7 +91,8 @@
      ofwdArrow.addEventListener("click", function(e) {
 //         var oimgInCenter = document.getElementById("popup");
          var y = oimgPopup.dataset.picture;
-         y = +y + 1;  // +y coerces y to a number.
+         y = +y + 1;  // +y unary operation coerces y to a number.
+         // Concatenation changes y back to string type.
          var nextImage = document.querySelector('[data-picture ="' + y + '"]');
          nextSrc = nextImage.getAttribute("src");
          oimgPopup.setAttribute("src",nextSrc);
