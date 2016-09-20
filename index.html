@@ -125,7 +125,7 @@
          var currentPopup = oimgPopup.dataset.picture;
          var pageImages = document.querySelectorAll("div#masonry img");
 
-         currentPopup = --currentPopup ;
+         currentPopup = --currentPopup; // Decrement value
 
         if (currentPopup > 0)  {
             var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
