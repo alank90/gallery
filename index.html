@@ -91,12 +91,9 @@
      ofwdArrow.addEventListener("click", function(e) {
 //         var oimgInCenter = document.getElementById("popup");
          var y = oimgPopup.dataset.picture;
-        /* var n = parseInt(y);
-         n = n + 1;
-         console.log(n);
-         a = n.toString();*/
-
-         var nextImage = document.querySelector('[data-picture = "6"]');
+         y = +y + 1;
+         console.log(y);
+         var nextImage = document.querySelector('[data-picture ="' + y + '"]');
          console.log(nextImage);
 
     });
