@@ -89,22 +89,62 @@
      var ofwdArrow = document.querySelector(".Forward_Arrow");
 
      ofwdArrow.addEventListener("click", function(e) {
-//         var oimgInCenter = document.getElementById("popup");
-         var y = oimgPopup.dataset.picture;
-         y = +y + 1;  // +y unary operation coerces y to a number.
-         // Concatenation changes y back to string type.
-         var nextImage = document.querySelector('[data-picture ="' + y + '"]');
-         nextSrc = nextImage.getAttribute("src");
-         oimgPopup.setAttribute("src",nextSrc);
-         oimgPopup.setAttribute("data-picture",y);
+         var currentPopup = oimgPopup.dataset.picture;
+         var pageImages = document.querySelectorAll("div#masonry img");
 
-          /* var xx = document.querySelectorAll("span.a, span.c");
+         currentPopup = +currentPopup + 1;  /* +y unary operation coerces y to a number.
+           Concatenation changes y back to string type. */
 
-        for (var i = 0; i < xx.length; i++) {
-            xx[i].style.color="red";
-          }
-         */
-    });
+         if (currentPopup <= pageImages.length)  {
+            var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+            var nextSrc = o_nextImage.getAttribute("src");
+            oimgPopup.setAttribute("src", nextSrc);
+            oimgPopup.setAttribute("data-picture", currentPopup);
+         }
+         else if (currentPopup > pageImages.length) {
+             currentPopup = 1;
+             var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+             nextSrc = o_nextImage.getAttribute("src");
+             oimgPopup.setAttribute("src",nextSrc);
+             oimgPopup.setAttribute("data-picture", currentPopup);
+        }
+        else  console.log ("Error on ofwdArrow event listener.")
+
+     });
+
+//  =====  End of Forward Arrow event handler  ===========================
+
+
+     /*====================================================================
+     ============ Back Arrow event handler Begins here ====================
+     ====================================================================== */
+
+     var obackArrow = document.querySelector(".Back_Arrow");
+
+     obackArrow.addEventListener("click", function(e) {
+         var currentPopup = oimgPopup.dataset.picture;
+         var pageImages = document.querySelectorAll("div#masonry img");
+
+         currentPopup = --currentPopup ;
+
+        if (currentPopup > 0)  {
+            var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+            var nextSrc = o_nextImage.getAttribute("src");
+            oimgPopup.setAttribute("src", nextSrc);
+            oimgPopup.setAttribute("data-picture", currentPopup);
+        }
+        else if (currentPopup = 1) {
+                  currentPopup = pageImages.length;
+                  var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+                  var nextSrc = o_nextImage.getAttribute("src");
+                  oimgPopup.setAttribute("src", nextSrc);
+                  oimgPopup.setAttribute("data-picture", currentPopup);
+        }
+          else  console.log ("Error on obackArrow event listener.")
+
+     });
+//  =====  End of Back Arrow event handler  ===========================
+
 
 </script>
 
