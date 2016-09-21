@@ -46,6 +46,19 @@
     var oimgPopup = document.getElementById("popup");
 
 
+function fadeOut(el){
+	var elem = document.getElementById(el);
+	elem.style.transition = "opacity 2s linear 0s";
+	elem.style.opacity = 0;
+}
+function fadeIn(el){
+    var elem = document.getElementById(el);
+    console.log(elem);
+	elem.style.transition = "opacity 2s linear 0s";
+	elem.style.opacity = 1;
+}
+
+
    /* =============================================================================
      ============ add event listener for Large Popup of       =====================
      ============ image when small image on page is clicked   =====================
@@ -54,9 +67,10 @@
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
         oimgPopup.setAttribute("src", imgClicked);
-        oimgPopup.style.display = "block";
+//        oimgPopup.style.display = "block";
         oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
-        oimgPopup.style.opacity = "1";
+        oimgPopup.style.transition = "opacity 2s"  // Set Opacity transition effect
+        fadeIn("popup"); // Now Picture will fadein
         var oallImages = document.images;
         for (var i = 0; i < oallImages.length; i++) {
             if (oallImages[i].classList.contains("arrow")) {
@@ -72,7 +86,7 @@
      ============================================================================ */
     oimgPopup.addEventListener("click", function () {
         var oallImages = document.images;
-        oimgPopup.style.display = "none";
+        fadeOut("popup"); // Transition out with a fadeout
         for (var i = 0; i < oallImages.length; i++) {
             if ((oallImages[i].classList.contains("Back_Arrow")) || (oallImages[i].classList.contains("Forward_Arrow"))) {
                 //console.log(oallImages[i]);
@@ -90,6 +104,7 @@
      var ofwdArrow = document.querySelector(".Forward_Arrow");
 
      ofwdArrow.addEventListener("click", function(e) {
+         fadeOut("popup");
          var currentPopup = oimgPopup.dataset.picture;
          var pageImages = document.querySelectorAll("div#masonry img");
 
@@ -97,10 +112,13 @@
            Concatenation changes y back to string type. */
 
          if (currentPopup <= pageImages.length)  {
+
             var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
             var nextSrc = o_nextImage.getAttribute("src");
             oimgPopup.setAttribute("src", nextSrc);
             oimgPopup.setAttribute("data-picture", currentPopup);
+            fadeIn("popup");
+
         }
          else if (currentPopup > pageImages.length) {
              currentPopup = 1;
@@ -108,6 +126,7 @@
              nextSrc = o_nextImage.getAttribute("src");
              oimgPopup.setAttribute("src",nextSrc);
              oimgPopup.setAttribute("data-picture", currentPopup);
+             fadeIn("popup");
         }
         else  console.log ("Error on ofwdArrow event listener.")
 
