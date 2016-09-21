@@ -64,12 +64,14 @@ function fadeIn(el){
      ============ image when small image on page is clicked   =====================
      ============================================================================ */
     oel.addEventListener("click", function (e) {
+        oimgPopup.style.display = "block";
+//        oimgPopup.style.zIndex = "1";
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
+
         oimgPopup.setAttribute("src", imgClicked);
-//        oimgPopup.style.display = "block";
         oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
-        oimgPopup.style.transition = "opacity 2s"  // Set Opacity transition effect
+//        oimgPopup.style.transition = "opacity 2s"  // Set Opacity transition effect
         fadeIn("popup"); // Now Picture will fadein
         var oallImages = document.images;
         for (var i = 0; i < oallImages.length; i++) {
@@ -105,6 +107,7 @@ function fadeIn(el){
 
      ofwdArrow.addEventListener("click", function(e) {
          fadeOut("popup");
+
          var currentPopup = oimgPopup.dataset.picture;
          var pageImages = document.querySelectorAll("div#masonry img");
 
@@ -112,21 +115,25 @@ function fadeIn(el){
            Concatenation changes y back to string type. */
 
          if (currentPopup <= pageImages.length)  {
-
+            setTimeout(function() {
             var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
             var nextSrc = o_nextImage.getAttribute("src");
             oimgPopup.setAttribute("src", nextSrc);
             oimgPopup.setAttribute("data-picture", currentPopup);
             fadeIn("popup");
+            },3000);
+//            fadeIn("popup");
 
         }
          else if (currentPopup > pageImages.length) {
              currentPopup = 1;
              var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
              nextSrc = o_nextImage.getAttribute("src");
+             setTimeout(function() {
              oimgPopup.setAttribute("src",nextSrc);
              oimgPopup.setAttribute("data-picture", currentPopup);
              fadeIn("popup");
+             },3000);
         }
         else  console.log ("Error on ofwdArrow event listener.")
 
@@ -142,23 +149,30 @@ function fadeIn(el){
      var obackArrow = document.querySelector(".Back_Arrow");
 
      obackArrow.addEventListener("click", function(e) {
+         fadeOut("popup");
          var currentPopup = oimgPopup.dataset.picture;
          var pageImages = document.querySelectorAll("div#masonry img");
 
          currentPopup = --currentPopup; // Decrement value
 
         if (currentPopup > 0)  {
+            setTimeout(function() {
             var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
             var nextSrc = o_nextImage.getAttribute("src");
             oimgPopup.setAttribute("src", nextSrc);
             oimgPopup.setAttribute("data-picture", currentPopup);
+            fadeIn("popup");
+            },3000);
         }
         else if (currentPopup = 1) {
+                  setTimeout(function() {
                   currentPopup = pageImages.length;
                   var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
                   var nextSrc = o_nextImage.getAttribute("src");
                   oimgPopup.setAttribute("src", nextSrc);
                   oimgPopup.setAttribute("data-picture", currentPopup);
+                  fadeIn("popup");
+                  },3000);
         }
           else  console.log ("Error on obackArrow event listener.")
 
