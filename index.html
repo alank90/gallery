@@ -56,6 +56,7 @@
         oimgPopup.setAttribute("src", imgClicked);
         oimgPopup.style.display = "block";
         oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
+        oimgPopup.style.opacity = "1";
         var oallImages = document.images;
         for (var i = 0; i < oallImages.length; i++) {
             if (oallImages[i].classList.contains("arrow")) {
@@ -100,7 +101,7 @@
             var nextSrc = o_nextImage.getAttribute("src");
             oimgPopup.setAttribute("src", nextSrc);
             oimgPopup.setAttribute("data-picture", currentPopup);
-         }
+        }
          else if (currentPopup > pageImages.length) {
              currentPopup = 1;
              var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
