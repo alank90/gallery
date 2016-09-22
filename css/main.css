@@ -95,7 +95,7 @@ body {
   height: auto;
   max-height: 10vh;
   overflow: auto;
-  background-color: #331a00;
+  background-color: rgba(51,26,0,0.6); /* rgba give semi-transparent background color */
   border-radius: 50%;
   padding: 2%;
   margin: auto;
@@ -113,7 +113,7 @@ body {
   height: auto;
   max-height: 10vh;
   overflow: auto;
-  background-color: #331a00;
+  background-color: rgba(51,26,0,0.6);
   border-radius: 50%;
   padding: 2%;
   margin: auto;
