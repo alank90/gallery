@@ -22,8 +22,8 @@
 
 
      <img id="popup" class="Absolute_Center is_Image" alt="Beautiful Girl Popup" data-picture="">
-     <img class="arrow Back_Arrow" src="http://akillian.x10host.com/gallery/img/go_previous_black.png" alt="Back Arrow">
-     <img class="arrow Forward_Arrow" src="http://akillian.x10host.com/gallery/img/go_next_black.png" alt="Forward Arrow">
+    <a href= "#"><img class="arrow Back_Arrow" src="http://akillian.x10host.com/gallery/img/go_previous_black.png" alt="Back Arrow"></a>
+    <a href= "#"><img class="arrow Forward_Arrow" src="http://akillian.x10host.com/gallery/img/go_next_black.png" alt="Forward Arrow"></a>
 
 
     <div id="masonry">
@@ -116,12 +116,12 @@ function fadeIn(el){
 
          if (currentPopup <= pageImages.length)  {
             setTimeout(function() {
-            var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
-            var nextSrc = o_nextImage.getAttribute("src");
-            oimgPopup.setAttribute("src", nextSrc);
-            oimgPopup.setAttribute("data-picture", currentPopup);
-            fadeIn("popup");
-            },3000);
+              var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+              var nextSrc = o_nextImage.getAttribute("src");
+              oimgPopup.setAttribute("src", nextSrc);
+              oimgPopup.setAttribute("data-picture", currentPopup);
+              fadeIn("popup");
+            },2000);
 //            fadeIn("popup");
 
         }
@@ -130,10 +130,10 @@ function fadeIn(el){
              var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
              nextSrc = o_nextImage.getAttribute("src");
              setTimeout(function() {
-             oimgPopup.setAttribute("src",nextSrc);
-             oimgPopup.setAttribute("data-picture", currentPopup);
-             fadeIn("popup");
-             },3000);
+               oimgPopup.setAttribute("src",nextSrc);
+               oimgPopup.setAttribute("data-picture", currentPopup);
+               fadeIn("popup");
+             },2000);
         }
         else  console.log ("Error on ofwdArrow event listener.")
 
@@ -157,22 +157,22 @@ function fadeIn(el){
 
         if (currentPopup > 0)  {
             setTimeout(function() {
-            var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
-            var nextSrc = o_nextImage.getAttribute("src");
-            oimgPopup.setAttribute("src", nextSrc);
-            oimgPopup.setAttribute("data-picture", currentPopup);
-            fadeIn("popup");
-            },3000);
+              var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+              var nextSrc = o_nextImage.getAttribute("src");
+              oimgPopup.setAttribute("src", nextSrc);
+              oimgPopup.setAttribute("data-picture", currentPopup);
+              fadeIn("popup");
+            },2000);
         }
         else if (currentPopup = 1) {
                   setTimeout(function() {
-                  currentPopup = pageImages.length;
-                  var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
-                  var nextSrc = o_nextImage.getAttribute("src");
-                  oimgPopup.setAttribute("src", nextSrc);
-                  oimgPopup.setAttribute("data-picture", currentPopup);
-                  fadeIn("popup");
-                  },3000);
+                    currentPopup = pageImages.length;
+                    var o_nextImage = document.querySelector('[data-picture ="' + currentPopup + '"]');
+                    var nextSrc = o_nextImage.getAttribute("src");
+                    oimgPopup.setAttribute("src", nextSrc);
+                    oimgPopup.setAttribute("data-picture", currentPopup);
+                    fadeIn("popup");
+                  },2000);
         }
           else  console.log ("Error on obackArrow event listener.")
 
