@@ -44,7 +44,7 @@
    // Global Variable Declarations
     var oel = document.getElementById("masonry");
     var oimgPopup = document.getElementById("popup");
-
+    var oimgClasses = document.getElementsByClassName("arrow");
 
 function fadeOut(el){
 	var elem = document.getElementById(el);
@@ -53,8 +53,7 @@ function fadeOut(el){
 }
 function fadeIn(el){
     var elem = document.getElementById(el);
-    console.log(elem);
-	elem.style.transition = "opacity 2s linear 0s";
+    elem.style.transition = "opacity 2s linear 0s";
 	elem.style.opacity = 1;
 }
 
@@ -64,22 +63,34 @@ function fadeIn(el){
      ============ image when small image on page is clicked   =====================
      ============================================================================ */
     oel.addEventListener("click", function (e) {
-        oimgPopup.style.display = "block";
-//        oimgPopup.style.zIndex = "1";
+
+        if (oimgPopup.style.opacity = "1")  {
+           fadeOut("popup");
+           setTimeout(function() {
+              oimgPopup.style.display = "block";
+              oimgPopup.style.zIndex = "1";
+            })
+
+         }
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
 
         oimgPopup.setAttribute("src", imgClicked);
         oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
-//        oimgPopup.style.transition = "opacity 2s"  // Set Opacity transition effect
-        fadeIn("popup"); // Now Picture will fadein
-        var oallImages = document.images;
-        for (var i = 0; i < oallImages.length; i++) {
+        setTimeout(function() {
+          fadeIn("popup"); // Now Picture will fadein
+        },2000);
+
+      var arrowPresent = document.getElementsByClassName("arrow"); // Check if arrows have been drawn already. Skip it then.
+      if (arrowPresent.length > 0)  {
+          var oallImages = document.images;
+          for (var i = 0; i < oallImages.length; i++) {
             if (oallImages[i].classList.contains("arrow")) {
                 oallImages[i].classList.toggle("arrow");
                 oallImages[i].style.zIndex = "9";
             }
-        }
+          }
+      } // End if
     });
      // End Popup Event
 
@@ -89,6 +100,9 @@ function fadeIn(el){
     oimgPopup.addEventListener("click", function () {
         var oallImages = document.images;
         fadeOut("popup"); // Transition out with a fadeout
+        setTimeout(function() {
+           oimgPopup.style.zIndex = "-1";
+        },2000);
         for (var i = 0; i < oallImages.length; i++) {
             if ((oallImages[i].classList.contains("Back_Arrow")) || (oallImages[i].classList.contains("Forward_Arrow"))) {
                 //console.log(oallImages[i]);
