@@ -40,22 +40,22 @@
   <!-- -------------------------------------------------------------------------------------------------------------
    ---------------------- Javascript below this line  --------------------------------------------------------------
    ----------------------------------------------------------------------------------------------------------------->
- <script>
+<script>
    // Global Variable Declarations
     var oel = document.getElementById("masonry");
     var oimgPopup = document.getElementById("popup");
     var oimgClasses = document.getElementsByClassName("arrow");
 
-function fadeOut(el){
+ function fadeOut(el){
 	var elem = document.getElementById(el);
-	elem.style.transition = "opacity 2s linear 0s";
+//	elem.style.transition = "opacity 2s linear 0s";
 	elem.style.opacity = 0;
-}
-function fadeIn(el){
+ }
+ function fadeIn(el){
     var elem = document.getElementById(el);
-    elem.style.transition = "opacity 2s linear 0s";
+//    elem.style.transition = "opacity 2s linear 0s";
 	elem.style.opacity = 1;
-}
+ }
 
 
    /* =============================================================================
@@ -64,26 +64,31 @@ function fadeIn(el){
      ============================================================================ */
     oel.addEventListener("click", function (e) {
 
-        if (oimgPopup.style.opacity = "1")  {
+        if (oimgPopup.style.opacity == "1")  {
            fadeOut("popup");
            setTimeout(function() {
               oimgPopup.style.display = "block";
               oimgPopup.style.zIndex = "1";
             },2000);
+        }
+        else  {
+            fadeIn("popup");
+            oimgPopup.style.display = "block";
+            oimgPopup.style.zIndex = "1";
 
-         }
+        }
 
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
-
-        oimgPopup.setAttribute("src", imgClicked);
-        oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
         setTimeout(function() {
-          fadeIn("popup"); // Now Picture will fadein
+           oimgPopup.setAttribute("src", imgClicked);
+           oimgPopup.setAttribute("data-picture", imgNumber);  // Set Picture number via the data-picture attribute for #popup
+           fadeIn("popup"); // Now Picture will fadein
         },2000);
 
       var arrowPresent = document.getElementsByClassName("arrow"); // Check if arrows have been drawn already. Skip it then.
-      if (arrowPresent.length > 0)  {
+      setTimeout(function() {
+        if (arrowPresent.length > 0)  {
           var oallImages = document.images;
           for (var i = 0; i < oallImages.length; i++) {
             if (oallImages[i].classList.contains("arrow")) {
@@ -91,7 +96,8 @@ function fadeIn(el){
                 oallImages[i].style.zIndex = "9";
             }
           }
-      } // End if
+        } // End if
+      },2000);
     });
      // End Popup Event
 
@@ -100,14 +106,14 @@ function fadeIn(el){
      ============================================================================ */
     oimgPopup.addEventListener("click", function () {
         var oallImages = document.images;
-        fadeOut("popup"); // Transition out with a fadeout
+        oimgPopup.setAttribute("src", "");  // Clear src attribute
+        fadeOut("popup"); // Transition out
         setTimeout(function() {
            oimgPopup.style.zIndex = "-1";
         },2000);
         for (var i = 0; i < oallImages.length; i++) {
             if ((oallImages[i].classList.contains("Back_Arrow")) || (oallImages[i].classList.contains("Forward_Arrow"))) {
-                //console.log(oallImages[i]);
-                oallImages[i].classList.toggle("arrow");
+                  oallImages[i].classList.toggle("arrow");
             }
         }
     });
