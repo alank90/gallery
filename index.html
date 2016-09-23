@@ -69,9 +69,10 @@ function fadeIn(el){
            setTimeout(function() {
               oimgPopup.style.display = "block";
               oimgPopup.style.zIndex = "1";
-            })
+            },2000);
 
          }
+
         var imgClicked = e.target.src;
         var imgNumber = e.target.dataset.picture; // Find the number of the picture that was clicked by looking in the data- variable
 
