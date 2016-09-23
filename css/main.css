@@ -95,7 +95,7 @@ body {
   height: auto;
   max-height: 10vh;
   overflow: auto;
-  background-color: rgba(51,26,0,0.6); /* rgba give semi-transparent background color */
+  background-color: rgba(51,26,0,0.6); /* rgba give semi-transparent background color with the alpha channel */
   border-radius: 50%;
   padding: 2%;
   margin: auto;
