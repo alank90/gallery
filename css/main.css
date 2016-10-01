@@ -179,7 +179,31 @@ img#popup {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (max-width: 35rem) {
+    div#masonry {
+       flex-direction: row;
+       flex-wrap: wrap;
+        height: auto;
+
+    }
+      div#masonry img  {
+         width: 50%;
+         height: auto;
+
+      }
+
+ /*    Reorder the pictures with flexbox order.nice*/
+    div img[data-picture="7"], div img[data-picture="6"]  {
+        flex-basis: 100vw;
+         order: 99;
+    }
+      div img[data-picture="8"]  {
+         order: 2;
+      }
+
+    img#popup  {
+        max-width: 75vw;
+    }
 
 }
 
