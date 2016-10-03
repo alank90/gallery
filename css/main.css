@@ -183,13 +183,12 @@ img#popup {
     div#masonry {
        flex-direction: row;
        flex-wrap: wrap;
-        height: auto;
+       height: auto;
 
     }
       div#masonry img  {
          width: 50%;
-         height: auto;
-
+         height: 50%;  /* This makes Chrome scale height correctly */
       }
 
  /*    Reorder the pictures with flexbox order.nice*/
